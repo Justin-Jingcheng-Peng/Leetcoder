@@ -11,6 +11,9 @@ const TaskSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    difficulty:{
+        type: String,
+    }
 })
 
 module.exports = mongoose.model('Task', TaskSchema)

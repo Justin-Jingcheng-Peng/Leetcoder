@@ -1,6 +1,7 @@
 const taskIDDOM = document.querySelector('.task-edit-id')
 const taskNameDOM = document.querySelector('.task-edit-name')
 const taskCompletedDOM = document.querySelector('.task-edit-completed')
+const taskDifficultyDOM = document.querySelector('.task-edit-difficulty')
 const editFormDOM = document.querySelector('.single-task-form')
 const editBtnDOM = document.querySelector('.task-edit-btn')
 const formAlertDOM = document.querySelector('.form-alert')
@@ -33,6 +34,8 @@ editFormDOM.addEventListener('submit', async (e) => {
   e.preventDefault()
   try {
     const taskName = taskNameDOM.value
+    const taskDifficulty = taskDifficultyDOM.value
+    
     const taskCompleted = taskCompletedDOM.checked
 
     const {
@@ -40,12 +43,14 @@ editFormDOM.addEventListener('submit', async (e) => {
     } = await axios.patch(`/api/v1/tasks/${id}`, {
       name: taskName,
       completed: taskCompleted,
+      difficulty: taskDifficulty,
     })
 
-    const { _id: taskID, completed, name } = task
+    const { _id: taskID, completed, name, difficulty } = task
 
     taskIDDOM.textContent = taskID
     taskNameDOM.value = name
+    taskDifficultyDOM.value = difficulty
     tempName = name
     if (completed) {
       taskCompletedDOM.checked = true
