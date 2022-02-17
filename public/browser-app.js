@@ -2,6 +2,8 @@ const tasksDOM = document.querySelector('.tasks')
 const loadingDOM = document.querySelector('.loading-text')
 const formDOM = document.querySelector('.task-form')
 const taskInputDOM = document.querySelector('.task-input')
+const difficultyInputDOM = document.querySelector('.task-difficulty')
+const timeInputDOM = document.querySelector('.task-time')
 const formAlertDOM = document.querySelector('.form-alert')
 // Load tasks from /api/tasks
 const showTasks = async () => {
@@ -17,10 +19,11 @@ const showTasks = async () => {
     }
     const allTasks = tasks
       .map((task) => {
-        const { completed, _id: taskID, name, difficulty } = task
+        const { completed, _id: taskID, name, difficulty, finish_time } = task
         return `<div class="single-task ${completed && 'task-completed'}">
 <h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
 <h5><span><i class="far fa-check-circle"></i></span>${difficulty}</h5>
+<h5><span><i class="far fa-check-circle"></i></span>${finish_time} mins</h5>
 <div class="task-links">
 
 
@@ -69,9 +72,11 @@ tasksDOM.addEventListener('click', async (e) => {
 formDOM.addEventListener('submit', async (e) => {
   e.preventDefault()
   const name = taskInputDOM.value
+  const difficulty = difficultyInputDOM.value
+  const time = timeInputDOM.value
 
   try {
-    await axios.post('/api/v1/tasks', { name })
+    await axios.post('/api/v1/tasks', { name, difficulty, time })
     showTasks()
     taskInputDOM.value = ''
     formAlertDOM.style.display = 'block'

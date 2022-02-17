@@ -21,15 +21,35 @@
     <form class="task-form">
       <h4>Leetcoder</h4>
       <div class="form-control">
+        <div>
         <input
           type="text"
           name="name"
           class="task-input"
           placeholder="e.g. Balance a binary search tree"
         />
-        
-        
+        </div>
+
+        <div>
+        <label for="Difficulty">Difficulty:</label>
+          <select name="Difficulty" class="task-difficulty">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+          </select>
+        </div>
+
+        <div>
+          
+        </div>
+          <input
+            type="string"
+            name="time"
+            class="task-time"
+          />
+        <div>
         <button type="submit" class="btn submit-btn">submit</button>
+        </div>
       </div>
       <div class="form-alert"></div>
     </form>
