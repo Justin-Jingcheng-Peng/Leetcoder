@@ -73,12 +73,14 @@ formDOM.addEventListener('submit', async (e) => {
   e.preventDefault()
   const name = taskInputDOM.value
   const difficulty = difficultyInputDOM.value
-  const time = timeInputDOM.value
+  const finish_time = timeInputDOM.value
 
   try {
-    await axios.post('/api/v1/tasks', { name, difficulty, time })
+   
+    await axios.post('/api/v1/tasks', { name, difficulty, finish_time})
     showTasks()
     taskInputDOM.value = ''
+    timeInputDOM.value = 0
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `success, task added`
     formAlertDOM.classList.add('text-success')

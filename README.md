@@ -1,6 +1,6 @@
 # Leetcoder
 
-Feb. 18 update: There is still a bug in the input of the number. All other functions work well
+Feb. 18 update: All bugs are fixed
 
 Intro:
 The objective of this project is to help programmers leetcode more efficiently. As we know, timing is important in leetcode practice. We have to make sure that we can solve problems in a limited time. However, many programmers forget about this. Thus, I came up with the idea of tracking the time that the programmer takes to solve the problems.
